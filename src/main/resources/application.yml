@@ -1,13 +1,22 @@
+kafka:
+  bootstrap-servers: localhost:9092
+  topic:
+    initial-topic: b
+    new-topic: b-b
 spring:
   kafka:
     consumer:
       group-id: myGroup
       auto-offset-reset: latest
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      key.deserializer.schemas.enable: false
+      value.deserializer.schemas.enable: true
     producer:
       batch-size: 16384
       buffer-memory: 33554432
       retries: 0
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      key.serializer.schemas.enable: false
+      value.serializer.schemas.enable: true
